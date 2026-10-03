@@ -1,14 +1,11 @@
 version: 2
 updates:
+  # Renovate owns CI updates. The ignore rule also prevents separate
+  # Dependabot security-update PRs; vulnerability alerts remain enabled.
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: daily
-    groups:
-      codeql:
-        patterns:
-          - github/codeql-action/*
-      toolkit-workflows:
-        patterns:
-          - victron-venus/venus-os-ci-toolkit/.github/workflows/python-ci.yml
-          - victron-venus/venus-os-ci-toolkit/.github/workflows/auto-merge.yml
+      interval: weekly
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: '*'
